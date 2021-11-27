@@ -1,6 +1,6 @@
 import { LitElement, html, css } from 'lit';
 import { property } from 'lit/decorators.js';
-import allCharacters from './assets';
+import allCharacters, { escaped } from './assets';
 
 export class SpeedTyping extends LitElement {
   @property({ type: String }) character = '';
@@ -88,7 +88,7 @@ export class SpeedTyping extends LitElement {
 
   handleKey(key: any) {
     console.log(key);
-    if (key === 'Shift' || (key >= 'F1' && key <= 'F12') || key === 'Escape') {
+    if (escaped.includes(key)) {
       return;
     }
     if (key === this.character) {
