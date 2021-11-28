@@ -7,6 +7,10 @@ export class SpeedTyping extends LitElement {
 
   @property({ type: Boolean }) error = false;
 
+  @property({ type: Number }) numCorrect = 0;
+
+  @property({ type: Number }) numIncorrect = 0;
+
   static styles = css`
     :host {
       min-height: 100vh;
@@ -62,12 +66,24 @@ export class SpeedTyping extends LitElement {
     }
 
     main.error {
+      width: 100%;
+      height: 100%;
+      background-color: #ff0000;
       animation: shake 0.5s;
+    }
+
+    h1 {
+      color: var(--light-text-color);
     }
 
     .character {
       font-weight: 900;
       font-size: 4rem;
+      color: var(--light-text-color);
+    }
+
+    .scoreboard {
+      margin: 6rem;
     }
 
     .app-footer {
@@ -92,6 +108,7 @@ export class SpeedTyping extends LitElement {
       return;
     }
     if (key === this.character) {
+      this.numCorrect += 1;
       this.character = this.getRandomChar();
     } else {
       const getStyle = getComputedStyle(
@@ -109,6 +126,7 @@ export class SpeedTyping extends LitElement {
         '--background-color',
         '#ff0000'
       );
+      this.numIncorrect += 1;
     }
   }
 
@@ -121,6 +139,11 @@ export class SpeedTyping extends LitElement {
       <main class=${this.error ? 'error' : ''}>
         <h1>Type the character</h1>
         <p class="character">${this.character}</p>
+        <div class="scoreboard">
+          <p class="score">Your Score</p>
+          <p class="correct">correct: ${this.numCorrect}</p>
+          <p class="incorrect">incorrect: ${this.numIncorrect}</p>
+        </div>
       </main>
       <p class="app-footer"></p>
     `;
