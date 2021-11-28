@@ -4,12 +4,15 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <meta name="Description" content="Put your description here.">
+  <meta name="color-scheme" content="dark light">
   <base href="/">
 
   <style>
     :root {
-      --background-color: #000000;
+      --background-color-dark: #0e141b;
+      --background-color-light: #ffffff;
+      --light-text-color: #d7d8d9;
+      --dark-text-color: #66676a;
     }
     html,
     body {
@@ -17,7 +20,12 @@
       padding: 0;
       font-family: 'Victor Mono';
       font-weight: bold;
-      background-color: var(--background-color);
+      background-color: var(--background-color-light);
+    }
+    @media (prefers-color-scheme: dark) {
+      html,body {
+        background-color: var(--background-color-dark);
+      }
     }
   </style>
   <title>speed-typing</title>
