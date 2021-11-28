@@ -86,5 +86,6 @@
       "eslint --fix",
       "prettier --write"
     ]
-  }
+  },
+  "customElements": "custom-elements.json"
 }
