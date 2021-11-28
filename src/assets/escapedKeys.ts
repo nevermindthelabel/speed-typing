@@ -16,6 +16,7 @@ const escaped = [
   'Delete',
   'Backspace',
   ' ',
+  'Meta',
 ];
 
 export { escaped };
