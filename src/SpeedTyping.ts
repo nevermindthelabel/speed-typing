@@ -13,11 +13,11 @@ export class SpeedTyping extends LitElement {
 
   static styles = css`
     :host {
-      min-height: 100vh;
+      min-height: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       font-size: calc(10px + 2vmin);
       color: #1a2b42;
       max-width: 960px;
@@ -61,15 +61,27 @@ export class SpeedTyping extends LitElement {
       }
     }
 
+    h1,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
     main {
+      width: 100vw;
+      height: calc(100vh - 2.6rem);
       flex-grow: 1;
+      transition: background-color 0.2s;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     main.error {
-      width: 100%;
-      height: 100%;
       background-color: #ff0000;
-      animation: shake 0.5s;
+      animation: shake 1s;
     }
 
     h1 {
@@ -87,8 +99,12 @@ export class SpeedTyping extends LitElement {
     }
 
     .app-footer {
-      font-size: calc(12px + 0.5vmin);
+      display: flex;
+      justify-content: center;
       align-items: center;
+      min-height: 30px;
+      width: 100vw;
+      background-color: green;
     }
   `;
 
@@ -145,7 +161,7 @@ export class SpeedTyping extends LitElement {
           <p class="incorrect">incorrect: ${this.numIncorrect}</p>
         </div>
       </main>
-      <p class="app-footer"></p>
+      <div class="app-footer">footer</div>
     `;
   }
 }
